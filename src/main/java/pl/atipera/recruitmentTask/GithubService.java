@@ -7,6 +7,9 @@ import java.util.List;
 @Service
 public class GithubService {
     public List<RepositoryResponse> getRepositories(String user){
+        if (user.equals("not-existing")) {
+            throw new RepositoryNotFoundException();
+        }
         RepositoryResponse repo1 = new RepositoryResponse(
                 "demo-repo",
                 user,

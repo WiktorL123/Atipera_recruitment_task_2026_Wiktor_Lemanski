@@ -15,7 +15,7 @@ public class GithubController {
     private final GithubService githubService;
 
     @GetMapping("/users/{user}/repositories")
-    List<RepositoryResponse> getNotAForkRepositories(@PathVariable String user){
-        return githubService.getRepositories(user);
+    List<RepositoryResponse> getRepositories(@PathVariable String user){
+        return githubService.getRepositoriesWithBranches(user);
     }
 }

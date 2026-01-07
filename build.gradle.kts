@@ -18,13 +18,21 @@ repositories {
     mavenCentral()
 }
 
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:2025.0.0")
+    }
+}
+
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-restclient")
+
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
-    testImplementation("org.springframework.boot:spring-boot-starter-restclient-test")
-    testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
+    implementation("org.springframework.boot:spring-boot-starter-restclient")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.springframework.cloud:spring-cloud-contract-wiremock")
+
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-    testImplementation("org.wiremock:wiremock-standalone:3.5.2")
 }
 
 tasks.withType<Test> {
